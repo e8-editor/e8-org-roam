@@ -1,0 +1,47 @@
+# Runs the package's ERT tests and type-checks it, on a released E8:
+# the oldest the manifest says it runs on, and the newest.
+name: Test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: E8 ${{ matrix.e8 }}
+    strategy:
+      fail-fast: false
+      matrix:
+        e8: [oldest, newest]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Download E8
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "${{ matrix.e8 }}" = oldest ]; then
+            tag="v$(jq -r '.e8 // empty' e8-package.json)"
+          fi
+          if [ "${tag:-v}" = v ]; then
+            tag=$(gh release view --repo e8-editor/e8 --json tagName -q .tagName)
+          fi
+          echo "E8 $tag"
+          cd "$RUNNER_TEMP"
+          gh release download "$tag" --repo e8-editor/e8 --pattern '*-x86_64-unknown-linux-gnu.tar.gz*'
+          sha256sum -c ./*.tar.gz.sha256
+          tar xzf ./*.tar.gz
+          echo "$RUNNER_TEMP/$(basename ./*.tar.gz .tar.gz)" >> "$GITHUB_PATH"
+
+      - name: Test
+        run: make test
+
+      - name: Type-check
+        run: |
+          npm install --global --no-fund --no-audit typescript@5.9
+          make types

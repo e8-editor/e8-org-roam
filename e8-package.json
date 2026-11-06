@@ -1,0 +1,8 @@
+{
+  "name": "org-roam",
+  "description": "Notes as Org files linked by ID, found by title, captured, and their backlinks shown, after org-roam",
+  "e8": "0.3.1",
+  "requires": {
+    "magit-section": "e8-editor/e8-magit-section@0.1.0"
+  }
+}

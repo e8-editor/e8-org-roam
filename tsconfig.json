@@ -1,0 +1,18 @@
+{
+  // Checks the package as E8 runs it, against the declarations
+  // `e8 --print-types .e8` writes (`make types`): e8.d.ts, and
+  // the packages that ship with E8, which this one imports by name.
+  "compilerOptions": {
+    "strict": true,
+    "noEmit": true,
+    "target": "es2023",
+    "lib": ["es2023"],
+    "types": [],
+    "moduleDetection": "force",
+    "module": "preserve",
+    "paths": { "*": ["./*", "./.e8/shipped/*", "./.e8/deps/e8-magit-section/*", "./.e8/deps/e8-vertico/*"] },
+    // E8 erases types rather than compiling them, so enums and the like are not allowed.
+    "erasableSyntaxOnly": true
+  },
+  "include": ["*.ts", "test/*.ts", ".e8/e8.d.ts"]
+}
