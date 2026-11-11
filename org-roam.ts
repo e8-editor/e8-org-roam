@@ -26,6 +26,9 @@ import { insertHeading, insertRoot, insertSection, magitSectionMode, currentSect
 import { orgIdGoto, orgIdUuid } from "org-id";
 import { PerBuffer, truthy } from "subr";
 
+/** A window as the E8 running gives one: an object, or in E8 0.5.8 and before a number. */
+type Win = ReturnType<typeof e8.selectedWindow>;
+
 e8.defineVariable({ name: "org-roam-directory", doc: "The directory of Org-roam's notes, searched recursively.", value: "~/org-roam/" });
 e8.defineVariable({
   name: "org-roam-db-location",
@@ -501,7 +504,7 @@ function expand(template: string, vars: { [k: string]: string }): { text: string
 }
 
 /** What each capture buffer is for, to finish or abort it. */
-const captures = new PerBuffer<{ node: { id: string; title: string }; file: string; fresh: boolean; then?: (node: { id: string; title: string }) => void; window: number }>();
+const captures = new PerBuffer<{ node: { id: string; title: string }; file: string; fresh: boolean; then?: (node: { id: string; title: string }) => void; window: Win }>();
 
 /** Chooses a capture template, by its key if there are several, as org-capture-select-template. */
 function chooseTemplate(): e8.Value[] {
