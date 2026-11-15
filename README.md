@@ -1,6 +1,13 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/e8-editor/e8/main/docs/assets/banner-ports-dark.png">
+  <img alt="E8 package ports" src="https://raw.githubusercontent.com/e8-editor/e8/main/docs/assets/banner-ports-light.png">
+</picture>
+
+Part of the [E8 package ports](https://github.com/e8-editor/e8#packages): Emacs packages ported to [E8](https://github.com/e8-editor/e8) and maintained with it. This is a port of [org-roam](https://github.com/org-roam/org-roam) 2.3.1 by Jethro Kuan and its contributors. The design and the original code are theirs; the port keeps upstream's licence, the GNU General Public License version 3 or later.
+
 # e8-org-roam
 
-A network of notes for [E8](https://github.com/e8-editor/e8): every Org file in a directory, and every heading in one that has an ID, is a node; nodes link to each other with `[[id:...]]` links, are found and made by their titles, and show the notes that link to them. A port of [org-roam](https://github.com/org-roam/org-roam) 2.3.1.
+A network of notes for [E8](https://github.com/e8-editor/e8): every Org file in a directory, and every heading in one that has an ID, is a node; nodes link to each other with `[[id:...]]` links, are found and made by their titles, and show the notes that link to them.
 
 ## Installing
 
@@ -63,7 +70,7 @@ An `[[id:...]]` link to any node in the directory is followed from anywhere with
 
 ## Credit
 
-This is a port to E8 of [org-roam](https://github.com/org-roam/org-roam) 2.3.1, by Jethro Kuan and its contributors, copyright Jethro Kuan, and distributed in MELPA, under the GNU General Public License version 3 or later. It is not the upstream authors' work as published, and they do not endorse it: report problems with the port here, not upstream.
+org-roam 2.3.1 is copyright Jethro Kuan and distributed in MELPA, under the GNU General Public License version 3 or later. This port is not the upstream authors' work as published, and they do not endorse it: report problems with the port here, not upstream.
 
 ## Developing
 
