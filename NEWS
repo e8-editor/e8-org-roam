@@ -4,6 +4,13 @@ This is the news of e8-org-roam, the E8 port of org-roam.  'C-h P'
 shows it under the package's description.
 
 
+* Changes in org-roam 0.1.1
+
+** It type-checks against E8 0.5.9 and newer.
+There windows are objects; it type-checks against older E8 too.
+Nothing changes when it runs.
+
+
 * Changes in org-roam 0.1.0
 
 This is the first release, a port of org-roam 2.3.1.  It needs E8
