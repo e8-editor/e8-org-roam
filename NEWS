@@ -1,0 +1,52 @@
+org-roam NEWS -- history of user-visible changes.
+
+This is the news of e8-org-roam, the E8 port of org-roam.  'C-h P'
+shows it under the package's description.
+
+
+* Changes in org-roam 0.1.0
+
+This is the first release, a port of org-roam 2.3.1.  It needs E8
+0.3.1 or newer and e8-magit-section.
+
+** Org files and headings with an ID are nodes, linked by their IDs.
+':ROAM_ALIASES:' gives a node other titles, ':ROAM_REFS:' the
+references it stands for, and '#+filetags:' and a heading's tags its
+tags.
+
+** 'org-roam-node-find' visits a node chosen by its title or an alias.
+A title no node has makes a new note.  With 'C-u', in another window.
+
+** 'org-roam-node-insert' inserts a link to a node or a new note.
+An active region is the link's text and the title to look for.
+
+** 'org-roam-capture' adds to a node from a capture template.
+'C-c C-c' finishes a capture and saves the note; 'C-c C-k' aborts it,
+deleting a new note's file.  'org-roam-capture-templates' holds the
+templates.
+
+** 'org-roam-buffer-toggle' shows the backlinks of the node at point.
+Each shows with the paragraph it is in, following point, and 'RET'
+visits it.  'org-roam-buffer-display-dedicated' shows a chosen node's
+in a buffer of their own.
+
+** 'org-roam-node-random' visits a node at random.
+
+** Commands change the aliases, refs and tags of the node at point.
+They are 'org-roam-alias-add', 'org-roam-alias-remove',
+'org-roam-ref-add', 'org-roam-ref-remove' and 'org-roam-tag-add'.
+
+** 'org-roam-db-sync' brings the index up to date with the notes.
+With 'C-u' it reads every note again.  'org-roam-db-autosync-mode'
+keeps it up to date as notes are saved.  The index is JSON in
+'org-roam-db-location', not an SQLite database.
+
+** 'org-roam-graph' draws the nodes and their links with Graphviz.
+
+** 'org-roam-directory' says where the notes are, searched recursively.
+'org-roam-file-extensions' and 'org-roam-file-exclude-regexp' say which
+files under it are notes.
+
+** 'org-roam-node-display-template' says how nodes show when choosing.
+
+** Links to any node by its ID are followed with 'C-c C-o'.
